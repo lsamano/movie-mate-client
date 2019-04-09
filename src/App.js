@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getProfileFetch} from './redux/actions';
+import Signup from './components/Signup';
+import Login from './components/Login';
+
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.getProfileFetch()
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Switch>
+          <Route path="/signup" component={Signup}/>
+          <Route path="/login" component={Login}/>
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  getProfileFetch: () => dispatch(getProfileFetch())
+})
+
+export default connect(null, mapDispatchToProps)(App);

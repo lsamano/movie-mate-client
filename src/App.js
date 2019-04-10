@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getProfileFetch} from './redux/actions';
+import {getProfileFetch, logoutUser} from './redux/actions';
 import Signup from './components/Signup';
 import Login from './components/Login';
 
@@ -11,20 +12,37 @@ class App extends Component {
     this.props.getProfileFetch()
   }
 
+  handleClick = event => {
+    event.preventDefault()
+    // Remove the token from localStorage
+    localStorage.removeItem("token")
+    // Remove the user object from the Redux store
+    this.props.logoutUser()
+  }
+
   render() {
     return (
-      <div>
+      <div className="App">
         <Switch>
           <Route path="/signup" component={Signup}/>
           <Route path="/login" component={Login}/>
         </Switch>
+          {this.props.currentUser.username
+            ? <button onClick={this.handleClick}>Log Out</button>
+            : null
+          }
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getProfileFetch: () => dispatch(getProfileFetch())
+const mapStateToProps = state => ({
+  currentUser: state.reducer.currentUser
 })
 
-export default connect(null, mapDispatchToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  getProfileFetch: () => dispatch(getProfileFetch()),
+  logoutUser: () => dispatch(logoutUser())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

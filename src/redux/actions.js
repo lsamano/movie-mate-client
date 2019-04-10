@@ -77,3 +77,7 @@ export const getProfileFetch = () => {
     }
   }
 }
+
+export const logoutUser = () => ({
+  type: 'LOGOUT_USER'
+})

@@ -15,7 +15,17 @@ import createRootReducer from './redux/rootReducer'
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-export const history = createBrowserHistory()
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import 'typeface-roboto';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
+
+const history = createBrowserHistory()
 
 const store = createStore(
     createRootReducer(history),
@@ -30,7 +40,10 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Route component={App} />
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <Route component={App} />
+      </MuiThemeProvider>
     </ConnectedRouter>
   </Provider>
   , document.getElementById('root'));

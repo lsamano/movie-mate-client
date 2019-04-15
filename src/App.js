@@ -5,7 +5,10 @@ import {connect} from 'react-redux';
 import {getProfileFetch, logoutUser} from './redux/actions';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Home from './components/Home';
+import NoRouteMatch from './components/NoRouteMatch';
 
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
   componentDidMount = () => {
@@ -26,9 +29,11 @@ class App extends Component {
         <Switch>
           <Route path="/signup" component={Signup}/>
           <Route path="/login" component={Login}/>
+          <Route exact path="/" component={Home}/>
+          <Route component={NoRouteMatch}/>
         </Switch>
           {this.props.currentUser.username
-            ? <button onClick={this.handleClick}>Log Out</button>
+            ? <Button onClick={this.handleClick}>Log Out</Button>
             : null
           }
       </div>

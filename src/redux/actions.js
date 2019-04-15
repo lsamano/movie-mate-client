@@ -1,3 +1,9 @@
+const addToReducer = (name, payload) => ({
+  type: 'ADD_TO_REDUCER',
+  name,
+  payload
+})
+
 export const userPostFetch = user => {
   return dispatch => {
     return fetch("http://localhost:3000/api/v1/users", {
@@ -17,16 +23,17 @@ export const userPostFetch = user => {
         } else {
           console.log(data);
           localStorage.setItem("token", data.jwt);
-          dispatch(loginUser(data.user))
+          // dispatch(loginUser(data.user))
+          dispatch(addToReducer("currentUser", data.user))
         }
       })
   }
 }
 
-const loginUser = userObj => ({
-    type: 'LOGIN_USER',
-    payload: userObj
-})
+// const loginUser = userObj => ({
+//     type: 'LOGIN_USER',
+//     payload: userObj
+// })
 
 export const userLoginFetch = user => {
   return dispatch => {
@@ -46,7 +53,8 @@ export const userLoginFetch = user => {
           // 'message' if there is an error
         } else {
           localStorage.setItem("token", data.jwt);
-          dispatch(loginUser(data.user))
+          // dispatch(loginUser(data.user))
+          dispatch(addToReducer("currentUser", data.user))
         }
       })
   }
@@ -71,7 +79,8 @@ export const getProfileFetch = () => {
             // If this happens, you may want to remove it.
             localStorage.removeItem("token")
           } else {
-            dispatch(loginUser(data.user))
+            // dispatch(loginUser(data.user))
+            dispatch(addToReducer("currentUser", data.user))
           }
         })
     }

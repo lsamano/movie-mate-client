@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Menu} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {logoutUser} from '../redux/actions';
+import { push } from 'connected-react-router';
 
 class NavBar extends Component {
   state = {
@@ -11,15 +12,29 @@ class NavBar extends Component {
   handleItemClick = (e, { name }) => {
     this.setState({
       activeItem: name
-    })
+    }, this.handleItem(name))
   }
 
-  handleLogOut = event => {
-    event.preventDefault()
+  handleItem = name => {
+    switch (name) {
+      case 'logout':
+      return this.handleLogOut()
+      case 'login':
+      return this.props.push('/login')
+      case 'signup':
+      return this.props.push('/signup')
+      default:
+      return
+    }
+  }
+
+  handleLogOut = _ => {
     // Remove the token from localStorage
     localStorage.removeItem("token")
     // Remove the user object from the Redux store
     this.props.logoutUser()
+    // change location
+    this.props.push('/login')
   }
 
   render() {
@@ -32,18 +47,18 @@ class NavBar extends Component {
           active={activeItem === 'home'}
           onClick={this.handleItemClick} />
         <Menu.Item
-          name='messages'
-          active={activeItem === 'messages'}
+          name='login'
+          active={activeItem === 'login'}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name='friends'
-          active={activeItem === 'friends'}
+          name='signup'
+          active={activeItem === 'signup'}
           onClick={this.handleItemClick}
         />
         {this.props.currentUser.username
           ? <Menu.Item
-            name='Log Out'
+            name='logout'
             active={activeItem === 'logout'}
             onClick={this.handleLogOut}
           />
@@ -59,7 +74,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(logoutUser())
+  logoutUser: () => dispatch(logoutUser()),
+  push: (location) => dispatch(push(location))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

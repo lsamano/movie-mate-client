@@ -8,7 +8,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import NoRouteMatch from './components/NoRouteMatch';
 
-import Button from '@material-ui/core/Button';
+import { Button } from 'semantic-ui-react';
 
 class App extends Component {
   componentDidMount = () => {

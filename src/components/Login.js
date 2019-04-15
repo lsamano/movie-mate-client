@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {userLoginFetch} from '../redux/actions';
-
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
-import FormLabel from '@material-ui/core/FormLabel';
-import Typography from '@material-ui/core/Typography';
+import {
+  Form,
+  Button
+} from 'semantic-ui-react';
 
 class Login extends Component {
   state = {
@@ -26,28 +25,32 @@ class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <Typography component="h2" variant="h1">Login</Typography>
+      <Form onSubmit={this.handleSubmit}>
+        <h1>Login</h1>
 
-        <FormLabel>Username</FormLabel>
-        <Input
+        <Form.Field>
+        <label>Username</label>
+        <input
           name='username'
           placeholder='Username'
           value={this.state.username}
           onChange={this.handleChange}
-          /><br/>
+          />
+      </Form.Field>
 
-        <FormLabel>Password</FormLabel>
-        <Input
+        <Form.Field>
+        <label>Password</label>
+        <input
           type='password'
           name='password'
           placeholder='Password'
           value={this.state.password}
           onChange={this.handleChange}
-          /><br/>
+          />
+      </Form.Field>
 
         <Button type='submit'>Submit</Button>
-      </form>
+      </Form>
     )
   }
 }

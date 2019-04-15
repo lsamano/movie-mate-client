@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
 import NoRouteMatch from './components/NoRouteMatch';
+import NavBar from './components/NavBar';
 
 import { Button } from 'semantic-ui-react';
 
@@ -15,27 +16,18 @@ class App extends Component {
     this.props.getProfileFetch()
   }
 
-  handleClick = event => {
-    event.preventDefault()
-    // Remove the token from localStorage
-    localStorage.removeItem("token")
-    // Remove the user object from the Redux store
-    this.props.logoutUser()
-  }
+
 
   render() {
     return (
       <div className="App">
+        <Route component={NavBar}/>
         <Switch>
           <Route path="/signup" component={Signup}/>
           <Route path="/login" component={Login}/>
           <Route exact path="/" component={Home}/>
           <Route component={NoRouteMatch}/>
         </Switch>
-          {this.props.currentUser.username
-            ? <Button onClick={this.handleClick}>Log Out</Button>
-            : null
-          }
       </div>
     );
   }

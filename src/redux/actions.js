@@ -87,6 +87,30 @@ export const getProfileFetch = () => {
   }
 }
 
+export const moviesIndexFetch = () => {
+  return dispatch => {
+    return fetch("http://localhost:3000/api/v1/movies", {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
+      }
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.message) {
+          // An error will occur if the JWT token is invalid.
+          // If this happens, you may want to remove it.
+        } else {
+          // dispatch(loginUser(data.user))
+          let movies = data.map(element => element.table)
+          dispatch(addToReducer("movies", movies))
+        }
+      })
+  }
+}
+
 export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 })

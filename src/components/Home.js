@@ -25,7 +25,7 @@ class Home extends React.Component {
     }
     return (
       <div>
-        <Card.Group>
+        <Card.Group centered>
           {this.formatMovies(this.props.movies)}
         </Card.Group>
       </div>

@@ -3,14 +3,21 @@ import {
   Image,
   Card
 } from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import { push } from 'connected-react-router';
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie, push}) => {
+  const handleClick = _ => {
+    push(`/movies/${movie.id}`)
+  }
+
   return (
-    <Card>
-      {movie.title}
-      <Image src={`http://image.tmdb.org/t/p/w300/${movie.poster_path}`} />
-    </Card>
+    <Card
+    link
+    image={`http://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+    header={movie.title}
+    onClick={handleClick}/>
   )
 }
 
-export default MovieCard;
+export default connect(null, {push})(MovieCard);

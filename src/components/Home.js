@@ -26,7 +26,7 @@ class Home extends React.Component {
     return (
       <div>
         <Card.Group centered>
-          {this.formatMovies(this.props.movies)}
+          {this.formatMovies(this.props.discover)}
         </Card.Group>
       </div>
     )
@@ -35,7 +35,7 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   currentUser: state.reducer.currentUser,
-  movies: state.reducer.movies
+  discover: state.reducer.discover
 })
 
 const mapDispatchToProps = dispatch => ({

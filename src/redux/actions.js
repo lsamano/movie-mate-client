@@ -103,13 +103,23 @@ export const moviesIndexFetch = () => {
           // An error will occur if the JWT token is invalid.
           // If this happens, you may want to remove it.
         } else {
-          // dispatch(loginUser(data.user))
-          let movies = data.map(element => element.table)
-          dispatch(addToReducer("movies", movies))
+          let {discover, nowPlaying, popular, topRated, upcoming} = data
+          discover = discover.map(e => e.table)
+          nowPlaying = nowPlaying.map(e => e.table)
+          popular = popular.map(e => e.table)
+          topRated = topRated.map(e => e.table)
+          upcoming = upcoming.map(e => e.table)
+          const movies = {discover, nowPlaying, popular, topRated, upcoming}
+          dispatch(addMovies(movies))
         }
       })
   }
 }
+
+const addMovies = movies => ({
+  type: 'ADD_MOVIES',
+  movies
+})
 
 export const logoutUser = () => ({
   type: 'LOGOUT_USER'

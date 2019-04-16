@@ -29,12 +29,6 @@ class Home extends React.Component {
     return (
       <Container>
         <Segment>
-          <Header as="h1"><Link to="/movies/discover">Discover</Link></Header>
-          <Card.Group centered>
-            {this.formatMovies(this.props.discover)}
-          </Card.Group>
-        </Segment>
-        <Segment>
           <Header as="h1"><Link to="/movies/now_playing">Now Playing</Link></Header>
           <Card.Group centered>
             {this.formatMovies(this.props.nowPlaying)}
@@ -50,6 +44,12 @@ class Home extends React.Component {
           <Header as="h1"><Link to="/movies/popular">Popular</Link></Header>
           <Card.Group centered>
             {this.formatMovies(this.props.popular)}
+          </Card.Group>
+        </Segment>
+        <Segment>
+          <Header as="h1"><Link to="/movies/discover">Discover</Link></Header>
+          <Card.Group centered>
+            {this.formatMovies(this.props.discover)}
           </Card.Group>
         </Segment>
         <Segment>

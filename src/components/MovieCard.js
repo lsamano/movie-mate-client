@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Image,
   Card
 } from 'semantic-ui-react';
 import {connect} from 'react-redux';

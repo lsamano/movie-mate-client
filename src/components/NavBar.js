@@ -23,6 +23,8 @@ class NavBar extends Component {
       return this.props.push('/login')
       case 'signup':
       return this.props.push('/signup')
+      case 'home':
+      return this.props.push('/')
       default:
       return
     }

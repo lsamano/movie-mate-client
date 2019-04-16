@@ -3,6 +3,9 @@ import {Menu} from 'semantic-ui-react';
 import {logoutUser} from '../redux/actions';
 import {connect} from 'react-redux';
 import { push } from 'connected-react-router';
+import {
+  Image
+} from 'semantic-ui-react';
 
 class NavBar extends Component {
   state = {
@@ -41,6 +44,7 @@ class NavBar extends Component {
 
   render() {
     const { activeItem } = this.state
+    const { currentUser } = this.props
 
     return (
       <Menu inverted>
@@ -58,12 +62,15 @@ class NavBar extends Component {
           active={activeItem === 'signup'}
           onClick={this.handleItemClick}
         />
-        {this.props.currentUser.username
-          ? <Menu.Item
+        {currentUser.username
+          ? <React.Fragment>
+            <Image avatar src={currentUser.avatar}/>
+            <Menu.Item
             name='logout'
             active={activeItem === 'logout'}
             onClick={this.handleLogOut}
           />
+          </React.Fragment>
           : null
         }
       </Menu>

@@ -6,6 +6,7 @@ class Signup extends Component {
   state = {
     username: "",
     password: "",
+    email: "",
     avatar: "",
     bio: ""
   }
@@ -43,6 +44,15 @@ class Signup extends Component {
           onChange={this.handleChange}
           /><br/>
 
+        <label>Email</label>
+            <input
+              type='email'
+              name='email'
+              placeholder='Email'
+              value={this.state.email}
+              onChange={this.handleChange}
+              /><br/>
+
         <label>Avatar</label>
           <input
             name='avatar'
@@ -58,7 +68,6 @@ class Signup extends Component {
             value={this.state.bio}
             onChange={this.handleChange}
             /><br/>
-
         <input type='submit'/>
       </form>
     )

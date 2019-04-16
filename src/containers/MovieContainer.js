@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Switch, Route} from 'react-router-dom';
 import TypeContainer from './TypeContainer';
+import MovieShow from '../components/MovieShow';
 import {
   Container,
   Segment
@@ -27,7 +28,7 @@ const MovieContainer = ({discover, nowPlaying, upcoming, topRated, popular}) => 
           <Route
             path="/movies/popular"
             render={() => <TypeContainer movies={popular} movieType={"Popular"}/> }/>
-
+          <Route path="/movies/:id" component={MovieShow} />
         </Switch>
       </Segment>
     </Container>

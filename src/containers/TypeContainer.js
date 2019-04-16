@@ -6,9 +6,7 @@ import {
 } from 'semantic-ui-react';
 
 const TypeContainer = ({movies, movieType}) => {
-  const formatMovies = movies => {
-    return movies.map(movie => <MovieCard movie={movie}/>)
-  }
+  const formatMovies = movies => movies.map(movie => <MovieCard movie={movie}/>)
 
   return (
     <React.Fragment>

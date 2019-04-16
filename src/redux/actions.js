@@ -1,3 +1,6 @@
+const domain = "http://localhost:3000"
+const version = "/api/v1"
+
 const addToReducer = (name, payload) => ({
   type: 'ADD_TO_REDUCER',
   name,
@@ -6,7 +9,7 @@ const addToReducer = (name, payload) => ({
 
 export const userPostFetch = user => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/users", {
+    return fetch(`${domain}${version}/users`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -30,14 +33,9 @@ export const userPostFetch = user => {
   }
 }
 
-// const loginUser = userObj => ({
-//     type: 'LOGIN_USER',
-//     payload: userObj
-// })
-
 export const userLoginFetch = user => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/login", {
+    return fetch(`${domain}${version}/login`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -64,7 +62,7 @@ export const getProfileFetch = () => {
   return dispatch => {
     const token = localStorage.token;
     if (token) {
-      return fetch("http://localhost:3000/api/v1/profile", {
+      return fetch(`${domain}${version}/profile`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +87,7 @@ export const getProfileFetch = () => {
 
 export const moviesIndexFetch = () => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/movies", {
+    return fetch(`${domain}${version}/movies`, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',

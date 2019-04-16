@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {moviesIndexFetch} from '../redux/actions';
 import MovieCard from './MovieCard';
-
 import {
   Container,
   Header,

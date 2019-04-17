@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-// import {moviesIndexFetch} from '../redux/actions';
 import MovieCard from './MovieCard';
 import {Link} from 'react-router-dom';
 import {
@@ -13,7 +12,7 @@ import {
 
 class Home extends React.Component {
   componentDidMount = () => {
-    // this.props.moviesIndexFetch();
+    //
   }
 
   formatMovies = movies => {
@@ -73,7 +72,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // moviesIndexFetch: () => dispatch(moviesIndexFetch())
+  // 
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

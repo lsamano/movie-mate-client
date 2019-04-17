@@ -1,5 +1,6 @@
 const domain = "http://localhost:3000"
 const version = "/api/v1"
+const tmdb = "https://api.themoviedb.org/3/movie"
 
 const addToReducer = (name, payload) => ({
   type: 'ADD_TO_REDUCER',
@@ -122,3 +123,13 @@ const addMovies = movies => ({
 export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 })
+
+export const movieShowFetch = id => {
+  return dispatch => {
+    return fetch(`${domain}${version}/movies/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch(addToReducer("movieShow", data.table))
+    })
+  }
+}

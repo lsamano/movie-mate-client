@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {movieShowFetch} from '../redux/actions';
+import {Image, Header, Segment} from 'semantic-ui-react';
 
 class MovieShow extends React.Component {
   componentDidMount() {
@@ -9,14 +10,18 @@ class MovieShow extends React.Component {
   }
 
   render() {
-    const {title} = this.props.movie
+    const {title, tagline, release_date, poster_path, overview} = this.props.movie
     if (!this.props.movie.id) {
       return <div>Loading...</div>
     } else {
       return (
         <div>
-          {title}
-
+          <Image src={`http://image.tmdb.org/t/p/w300/${poster_path}`}/>
+          <Header as='h1' content={title} subheader={tagline} attached='top'/>
+          <Segment attached>
+            {release_date}
+            <p>{overview}</p>
+          </Segment>
         </div>
       )
     }

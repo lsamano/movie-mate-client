@@ -1,6 +1,5 @@
 const domain = "http://localhost:3000"
 const version = "/api/v1"
-const tmdb = "https://api.themoviedb.org/3/movie"
 
 const addToReducer = (name, payload) => ({
   type: 'ADD_TO_REDUCER',

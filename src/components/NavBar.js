@@ -46,7 +46,7 @@ class NavBar extends Component {
     const { activeItem } = this.state
     const { currentUser } = this.props
     return (
-      <Menu inverted>
+      <Menu inverted borderless>
         {currentUser.username
           ? <React.Fragment>
             <Menu.Item
@@ -54,12 +54,16 @@ class NavBar extends Component {
               active={activeItem === 'home'}
               onClick={this.handleItemClick}
             />
-            <Image avatar src={currentUser.avatar}/>
+          <Menu.Menu position='right'>
+            <Menu.Item>
+              <Image avatar src={currentUser.avatar}/>
+            </Menu.Item>
             <Menu.Item
               name='logout'
               active={activeItem === 'logout'}
               onClick={this.handleLogOut}
-            />
+              />
+          </Menu.Menu>
           </React.Fragment>
           : <React.Fragment>
               <Menu.Item

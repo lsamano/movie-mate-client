@@ -132,3 +132,21 @@ export const movieShowFetch = id => {
     })
   }
 }
+
+export const loadUser = id => {
+  return dispatch => {
+    return fetch(`${domain}${version}/users/${id}`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("usershow", data.user);
+      dispatch(addToReducer("userShow", data.user))
+    })
+  }
+}

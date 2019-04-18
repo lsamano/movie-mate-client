@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getProfileFetch, moviesIndexFetch} from './redux/actions';
 import MovieContainer from './containers/MovieContainer';
+import UserContainer from './containers/UserContainer';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path="/movies" component={MovieContainer}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
+            <Route path="/users/" component={UserContainer}/>
             <Route exact path="/" component={Home}/>
             <Route component={NoRouteMatch}/>
           </Switch>

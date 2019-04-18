@@ -1,6 +1,7 @@
 const initialState = {
   currentUser: {},
   movieShow: {},
+  userShow: {},
   discover: [],
   nowPlaying: [],
   popular: [],

@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import NoRouteMatch from './components/NoRouteMatch';
 import NavBar from './components/NavBar';
+import {Container} from 'semantic-ui-react';
 
 class App extends Component {
   componentDidMount = () => {
@@ -22,14 +23,15 @@ class App extends Component {
       <div className="App">
 
         <Route component={NavBar}/>
-
-        <Switch>
-          <Route path="/movies" component={MovieContainer}/>
-          <Route path="/signup" component={Signup}/>
-          <Route path="/login" component={Login}/>
-          <Route exact path="/" component={Home}/>
-          <Route component={NoRouteMatch}/>
-        </Switch>
+        <Container>
+          <Switch>
+            <Route path="/movies" component={MovieContainer}/>
+            <Route path="/signup" component={Signup}/>
+            <Route path="/login" component={Login}/>
+            <Route exact path="/" component={Home}/>
+            <Route component={NoRouteMatch}/>
+          </Switch>
+        </Container>
 
       </div>
     );

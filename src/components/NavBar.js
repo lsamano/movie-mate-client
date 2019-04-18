@@ -9,7 +9,7 @@ import {
 
 class NavBar extends Component {
   state = {
-    activeItem: 'home'
+    activeItem: this.props.location.pathname.slice(1)
   }
 
   handleItemClick = (e, { name }) => {
@@ -45,33 +45,34 @@ class NavBar extends Component {
   render() {
     const { activeItem } = this.state
     const { currentUser } = this.props
-
     return (
       <Menu inverted>
-        <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick} />
-        <Menu.Item
-          name='login'
-          active={activeItem === 'login'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='signup'
-          active={activeItem === 'signup'}
-          onClick={this.handleItemClick}
-        />
         {currentUser.username
           ? <React.Fragment>
+            <Menu.Item
+              name='home'
+              active={activeItem === 'home'}
+              onClick={this.handleItemClick}
+            />
             <Image avatar src={currentUser.avatar}/>
             <Menu.Item
-            name='logout'
-            active={activeItem === 'logout'}
-            onClick={this.handleLogOut}
-          />
+              name='logout'
+              active={activeItem === 'logout'}
+              onClick={this.handleLogOut}
+            />
           </React.Fragment>
-          : null
+          : <React.Fragment>
+              <Menu.Item
+                name='login'
+                active={activeItem === 'login'}
+                onClick={this.handleItemClick}
+              />
+              <Menu.Item
+                name='signup'
+                active={activeItem === 'signup'}
+                onClick={this.handleItemClick}
+              />
+            </React.Fragment>
         }
       </Menu>
     )

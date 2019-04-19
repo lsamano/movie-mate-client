@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {loadUser} from '../redux/actions';
+import {Image} from 'semantic-ui-react';
 
 class UserShow extends React.Component {
   componentDidMount() {
@@ -12,7 +13,11 @@ class UserShow extends React.Component {
     const {userShow} = this.props
     if (userShow.username) {
       return (
-        <div>{userShow.username}</div>
+        <div>
+          <Image avatar src={userShow.avatar}/>
+          <h1>{userShow.username}</h1>
+          <p>{userShow.bio}</p>
+        </div>
       )
     } else {
       return <div>Loading...</div>

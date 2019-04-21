@@ -14,7 +14,7 @@ class UserShow extends React.Component {
     if (userShow.username) {
       return (
         <div>
-          <Image avatar src={userShow.avatar}/>
+          <Image src={userShow.avatar}/>
           <h1>{userShow.username}</h1>
           <p>{userShow.bio}</p>
         </div>

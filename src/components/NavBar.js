@@ -18,6 +18,10 @@ class NavBar extends Component {
     }, this.handleItem(name))
   }
 
+  handlePfpClick = event => {
+    this.props.push(`/users/${this.props.currentUser.id}`)
+  }
+
   handleItem = name => {
     switch (name) {
       case 'logout':
@@ -56,7 +60,9 @@ class NavBar extends Component {
             />
           <Menu.Menu position='right'>
             <Menu.Item>
-              <Image avatar src={currentUser.avatar}/>
+              <Image avatar
+                src={currentUser.avatar}
+                onClick={this.handlePfpClick}/>
             </Menu.Item>
             <Menu.Item
               name='logout'

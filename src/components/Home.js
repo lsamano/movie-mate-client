@@ -10,51 +10,44 @@ import {
   Card
 } from 'semantic-ui-react';
 
-class Home extends React.Component {
-  componentDidMount = () => {
-    //
-  }
-
-  formatMovies = movies => {
+const Home = ({currentUser, nowPlaying, upcoming, topRated, discover, popular}) => {
+  const formatMovies = movies => {
     return movies.map(movie => <MovieCard movie={movie}/>)
   }
 
-  render() {
-    const {currentUser} = this.props
-    if (!localStorage.token) {
-      return <Redirect to="/login"/>
-    }
-    console.log("Listen, this is what's your Home props", this.props);
+  if (!localStorage.token) {
+    return <Redirect to="/login"/>
+  } else {
     return (
       <Container>
         <Segment>
           <Header as="h1"><Link to="/movies/now_playing">Now Playing</Link></Header>
           <Card.Group centered>
-            {this.formatMovies(this.props.nowPlaying)}
+            {formatMovies(nowPlaying)}
           </Card.Group>
         </Segment>
         <Segment>
           <Header as="h1"><Link to="/movies/upcoming">Upcoming</Link></Header>
           <Card.Group centered>
-            {this.formatMovies(this.props.upcoming)}
+            {formatMovies(upcoming)}
           </Card.Group>
         </Segment>
         <Segment>
           <Header as="h1"><Link to="/movies/popular">Popular</Link></Header>
           <Card.Group centered>
-            {this.formatMovies(this.props.popular)}
+            {formatMovies(popular)}
           </Card.Group>
         </Segment>
         <Segment>
           <Header as="h1"><Link to="/movies/discover">Discover</Link></Header>
           <Card.Group centered>
-            {this.formatMovies(this.props.discover)}
+            {formatMovies(discover)}
           </Card.Group>
         </Segment>
         <Segment>
           <Header as="h1"><Link to="/movies/top_rated">Top Rated</Link></Header>
           <Card.Group centered>
-            {this.formatMovies(this.props.topRated)}
+            {formatMovies(topRated)}
           </Card.Group>
         </Segment>
       </Container>
@@ -72,7 +65,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // 
+  //
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

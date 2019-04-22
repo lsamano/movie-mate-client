@@ -6,16 +6,14 @@ import {
   Segment
 } from 'semantic-ui-react';
 
-class UserContainer extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Segment>
-          <Route path='/users/:id' component={UserShow}/>
-        </Segment>
-      </Container>
-    )
-  }
+const UserContainer = props => {
+  return (
+    <Container>
+      <Segment>
+        <Route path='/users/:id' component={UserShow}/>
+      </Segment>
+    </Container>
+  )
 }
 
 export default UserContainer;

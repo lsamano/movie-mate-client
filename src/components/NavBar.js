@@ -32,6 +32,16 @@ class NavBar extends Component {
       return this.props.push('/signup')
       case 'home':
       return this.props.push('/')
+      case 'discover':
+      return this.props.push('/movies/discover')
+      case 'upcoming':
+      return this.props.push('/movies/upcoming')
+      case 'popular':
+      return this.props.push('/movies/popular')
+      case 'now_playing':
+      return this.props.push('/movies/now_playing')
+      case 'top_rated':
+      return this.props.push('/movies/top_rated')
       default:
       return
     }
@@ -53,11 +63,38 @@ class NavBar extends Component {
       <Menu inverted borderless>
         {currentUser.username
           ? <React.Fragment>
-            <Menu.Item
-              name='home'
-              active={activeItem === 'home'}
-              onClick={this.handleItemClick}
-            />
+            <Menu.Menu>
+              <Menu.Item
+                name='home'
+                active={activeItem === 'home'}
+                onClick={this.handleItemClick}
+                />
+              <Menu.Item
+                name='discover'
+                active={activeItem === 'discover'}
+                onClick={this.handleItemClick}
+                />
+              <Menu.Item
+                name='upcoming'
+                active={activeItem === 'upcoming'}
+                onClick={this.handleItemClick}
+                />
+              <Menu.Item
+                name='popular'
+                active={activeItem === 'popular'}
+                onClick={this.handleItemClick}
+                />
+              <Menu.Item
+                name='now_playing'
+                active={activeItem === 'now_playing'}
+                onClick={this.handleItemClick}
+                />
+              <Menu.Item
+                name='top_rated'
+                active={activeItem === 'top_rated'}
+                onClick={this.handleItemClick}
+                />
+            </Menu.Menu>
           <Menu.Menu position='right'>
             <Menu.Item>
               <Image avatar

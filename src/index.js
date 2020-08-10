@@ -15,7 +15,7 @@ import createRootReducer from './redux/rootReducer'
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import './semantic/dist/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css'
 
 const history = createBrowserHistory()
 

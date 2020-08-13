@@ -101,10 +101,6 @@ export const moviesIndexFetch = () => {
           // JWT is invalid, have it removed
           localStorage.removeItem("token")
         } else {
-          // data needs to be reformatted slightly
-          for (const category in data) {
-            data[category] = data[category].map(obj => obj.table)
-          }
           dispatch(addMovies(data))
         }
       })
